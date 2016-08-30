@@ -15,10 +15,11 @@ prev_input = 0
 prev_ts = 0
 button_depressed = False
 timedelta = 3
+endpoint = 'http://sanchopanza.local:5000/api/coffees'
 
 def get_latest_and_speak():
     try:
-        resp = requests.get('http://sanchopanza.local:5000/api/coffees')
+        resp = requests.get(endpoint)
         prev_coffee = arrow.get(resp.json()['latest'])
         os.system('espeak -v fi "{}"'.format('Kahvi on valmistettu ' + prev_coffee.humanize(locale='fi')))
     except:
@@ -28,7 +29,7 @@ def get_latest_and_speak():
 
 def post_made_coffee():
     try:
-        resp = requests.post('http://sanchopanza.local:5000/api/coffees')
+        resp = requests.post(endpoint)
         os.system('espeak -v fi "{}"'.format('Rekisteröity kahvin uuttamisen aloitus.'))
     except:
         os.system('espeak -v fi "{}"'.format('Ei saatu yhteyttä palvelimeen.'))
