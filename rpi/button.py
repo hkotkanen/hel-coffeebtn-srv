@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+# as per http://askubuntu.com/questions/73396/how-to-get-espeak-working:
 # IF ESPEAK FAILS, MUST DO "amixer cset numid=3 1" (1=3.5mm jack, 2=HDMI)
 
 import sys, os
